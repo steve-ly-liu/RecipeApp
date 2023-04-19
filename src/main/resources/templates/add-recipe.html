@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Add Recipe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+  <script th:src="@{/webjars/jquery/3.6.4/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Recipe App</a>
+  <!-- Toggler/collapsible Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes}">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes/list}">All Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes/new}">New Recipe <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h1>New Recipe</h1>
+  <hr/>
+
+  <form th:action="@{/recipes/save}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6 mb-3 form-group">
+        <label class="form-label" for="title">Name:</label>
+        <input type="text" class="form-control" id="title" name="name" required="required"/>
+      </div>
+
+      <div class="col-md-6 mb-3 form-group">
+        <label class="form-label" for="category">Category:</label>
+        <input type="text" class="form-control" id="category" name="category" required="required"></input>
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label class="form-label" for="description">Description:</label>
+      <input type="text" class="form-control" id="description" name="description" required="required"></input>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-3 form-group">
+        <label class="form-label" for="preparationTime">Preparing Time (Minutes):</label>
+        <input type="number" class="form-control" id="preparationTime" name="preparationTime" required="required">
+      </div>
+      <div class="col-md-4 mb-3 form-group">
+        <label class="form-label" for="cookTime">Cook Time (Minutes):</label>
+        <input type="number" class="form-control" id="cookTime" name="cookTime" required="required">
+      </div>
+      <div class="col-md-4 mb-3 form-group">
+        <label class="form-label" for="servingSize">Serving Size (People):</label>
+        <input type="number" class="form-control" id="servingSize" name="servingSize" required="required">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 mb-3 form-group">
+        <label class="form-label" for="difficulty">Difficulty:</label>
+        <input type="text" class="form-control" id="difficulty" name="difficulty" required="required">
+      </div>
+      <div class="col-md-9 mb-3 form-group">
+        <label class="form-label" for="imageUrl">Image Url:</label>
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl"/>
+      </div>
+    </div>
+
+    <div class="mb-3 form-group">
+      <label class="form-label" for="ingredients">Ingredients:</label>
+      <textarea class="form-control" id="ingredients" name="ingredients" rows="2"></textarea>
+    </div>
+
+    <div class="mb-3 form-group">
+      <label class="form-label" for="directions">Directions:</label>
+      <textarea class="form-control" id="directions" name="directions" rows="4"></textarea>
+    </div>
+
+        <button type="submit" class="mb-5 btn btn-primary btn-lg">Add Recipe</button>
+  </form>
+</div>
+
+</body>
+</html>

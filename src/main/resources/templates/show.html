@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Detail</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+  <script th:src="@{/webjars/jquery/3.6.4/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Recipe App</a>
+  <!-- Toggler/collapsible Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes}">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes/list}">All Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes/new}">New Recipe</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container mt-5">
+  <h1>Recipe Details</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <img th:src="@{${recipe.imageUrl}}" alt="Recipe Image" class="img-fluid" th:alt="${recipe.getName()}">
+    </div>
+    <div class="col-md-6">
+      <h2 th:text="${recipe.name}"></h2>
+      <hr>
+      <p><strong>Category: </strong> <span th:text="${recipe.getCategory()}"/></p>
+      <p><strong>Description: </strong> <span th:text="${recipe.getDescription()}"/></p>
+      <p><strong>Preparing Time: </strong> <span th:text="${recipe.getPreparationTime()}"/></p>
+      <p><strong>Cook Time: </strong> <span th:text="${recipe.getCookTime()}"/></p>
+      <p><strong>Difficulty: </strong> <span th:text="${recipe.getDifficulty()}"/></p>
+      <p><strong>Serving Size: </strong> <span th:text="${recipe.getServingSize()}"/></p>
+
+      <h3>Ingredients:</h3>
+      <p th:text="${recipe.getIngredients()}"></p>
+      <h3>Directions:</h3>
+      <p th:text="${recipe.getDirections()}"></p>
+      <hr/>
+
+      <div class="mb-5">
+        <a th:href="@{{id}/edit(id=${recipe.getId()})}" class="btn btn-primary">Edit Recipe</a>
+        <a th:href="@{{id}/delete(id=${recipe.getId()})}" class="btn btn-danger">Delete Recipe</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

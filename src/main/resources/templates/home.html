@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Recipe App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+  <script th:src="@{/webjars/jquery/3.6.4/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Recipe App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes/list}">All Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/recipes/new}">New Recipe</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="jumbotron mt-3">
+    <h1 class="display-4">Welcome to Recipe App!</h1>
+    <p class="lead">This is a simple web application for managing your recipes.</p>
+    <hr class="my-4">
+    <p>To get started, click on the Recipes link in the navigation menu.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button" th:href="@{/recipes/list}">View Recipes</a>
+  </div>
+</div>
+
+<footer class="container-fluid bg-light text-center mt-3">
+  <p>&copy; 2023 Recipe App. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

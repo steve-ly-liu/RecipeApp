@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Recipe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.6.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Recipe App</a>
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/recipes}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/recipes/list}">All Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/recipes/new}">New Recipe</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+
+    <h1>Edit Recipe</h1>
+    <hr/>
+    <form th:action="@{/recipes/save}" th:object="${recipe}" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}" />
+        <div class="row">
+            <div class="col-md-6 mb-3 form-group">
+                <label class="form-label">Name:</label>
+                <input type="text" th:field="*{name}" class="form-control" />
+            </div>
+            <div class="col-md-6 mb-3 form-group">
+                <label class="form-label">Category:</label>
+                <input type="text" th:field="*{category}" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 form-group">
+                <label class="form-label">Description:</label>
+                <input type="text" th:field="*{description}" class="form-control"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-3 form-group">
+                <label class="form-label">Preparing Time (Minutes):</label>
+                <input type="number" th:field="*{preparationTime}" class="form-control"/>
+            </div>
+            <div class="col-md-3 mb-3 form-group">
+                <label class="form-label">Cook Time (Minutes):</label>
+                <input type="number" th:field="*{cookTime}" class="form-control"/>
+            </div>
+            <div class="col-md-3 mb-3 form-group">
+                <label class="form-label">Serving Size (People):</label>
+                <input type="number" th:field="*{servingSize}" class="form-control"/>
+            </div>
+            <div class="col-md-3 mb-3 form-group">
+                <label class="form-label">Difficulty:</label>
+                <input type="text" th:field="*{difficulty}" class="form-control"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 form-group">
+                <label class="form-label">Image Url:</label>
+                <input type="text" th:field="*{imageUrl}" class="form-control" />
+            </div>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label class="form-label">Ingredients:</label>
+            <textarea th:field="*{ingredients}" class="form-control" rows="2"></textarea>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label">Directions:</label>
+            <textarea th:field="*{directions}" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="mb-5 form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Update Recipe</button>
+                <a th:href="@{/recipes/list}" class="btn btn-danger btn-lg">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
